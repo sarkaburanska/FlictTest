@@ -8,21 +8,21 @@ def is_array(x)
   x.class == Array
 end
 
-def read_array_rec(array, result)
+def flatten_array_rec(array, result)
   for i in array do
     if is_array(i)
-      puts i.inspect
-      read_array_rec(i,result)
+      flatten_array_rec(i,result)
     else
-      puts i.inspect
       result.push(i)
     end
   end
 end
 
 array = [[1,2,[3]],4]
+puts 'Given nested array'
 puts array.inspect
 result = []
-read_array_rec(array, result)
+flatten_array_rec(array, result)
+puts 'Flatten result array'
 puts result.inspect
 
